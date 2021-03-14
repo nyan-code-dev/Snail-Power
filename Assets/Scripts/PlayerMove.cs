@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
+    
+    private bool jumpPressed;
+
+    [HideInInspector] public Player player;
+
     private bool isGrounded;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float checkRadious;
@@ -19,22 +25,19 @@ public class PlayerMove : MonoBehaviour
     private float moveInput;
     private Rigidbody2D rb;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
+    
+
     private void Update()
     {
-        moveInput = Input.GetAxis("Horizontal");
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
-        {
-            isJumping = true;
-            jumpTimeCounter = jumpTime;
-            rb.velocity = Vector2.up * jumpForce;
-        }
-        if (Input.GetKey(KeyCode.Space) && isJumping)
+        if (jumpPressed && isJumping)
         {
             if (jumpTimeCounter > 0)
             {
@@ -46,15 +49,33 @@ public class PlayerMove : MonoBehaviour
                 isJumping = false;
             }
         }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            isJumping = false;
-        }
     }
 
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadious, whatIsGround);
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+    }
+
+    public void JumpStart()
+    {
+        jumpPressed = true;
+        if (isGrounded)
+        {
+            isJumping = true;
+            jumpTimeCounter = jumpTime;
+            rb.velocity = Vector2.up * jumpForce;
+        }
+    }
+
+    public void JumpEnd()
+    {
+        jumpPressed = false;
+        isJumping = false;
+    }
+
+    public void Movement(float input)
+    {
+        moveInput = input;
     }
 }
