@@ -30,10 +30,4 @@ public class PlayerInput : MonoBehaviour
     {
         controls.Disable();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
