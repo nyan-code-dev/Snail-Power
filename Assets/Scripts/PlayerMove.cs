@@ -33,8 +33,6 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    
-
     private void Update()
     {
         if (jumpPressed && isJumping)

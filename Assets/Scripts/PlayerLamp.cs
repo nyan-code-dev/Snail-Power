@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.UI;
 
 public class PlayerLamp : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerLamp : MonoBehaviour
     [SerializeField] private LightShell shell;
     [SerializeField] private GameObject defaultLight;
     [SerializeField] private GameObject lampLight;
+    [SerializeField] private Slider lampBar;
 
     private bool lampOn;
 
@@ -18,6 +20,8 @@ public class PlayerLamp : MonoBehaviour
     {
         lampLight.GetComponent<Light2D>().pointLightOuterRadius = shell.LightRange;
         shell.energyLeft = shell.MaxEnergy;
+        lampBar.maxValue = shell.MaxEnergy;
+        lampBar.value = shell.energyLeft;
     }
 
     // Update is called once per frame
@@ -26,6 +30,7 @@ public class PlayerLamp : MonoBehaviour
         if (lampOn)
         {
             shell.energyLeft -= Time.deltaTime;
+            lampBar.value = shell.energyLeft;
             if (shell.energyLeft <= 0)
             {
                 shell.isCharged = false;
@@ -51,10 +56,6 @@ public class PlayerLamp : MonoBehaviour
                 lampOn = true;
                 defaultLight.SetActive(false);
                 lampLight.SetActive(true);
-            }
-            else
-            {
-                Debug.Log("Shell is not charged");
             }
         }
     }

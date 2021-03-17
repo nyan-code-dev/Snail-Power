@@ -8,7 +8,7 @@ public class Shell
     /// <summary>
     /// Size of the shell from 1~5, it affects capacity of the shell and time to fill up
     /// </summary>
-    [Range(1, 5)]
+    [Range(1, 3)]
     public float size = 1;
 
     /// <summary>
