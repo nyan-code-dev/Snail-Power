@@ -131,7 +131,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 733525031545229104, guid: 64d0ccf0027d25444a553bc38de77125, type: 3}
   m_PrefabInstance: {fileID: 1317350616429879975}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4331202979274369185
+--- !u!1001 &1697485144956801028
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -160,15 +160,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4935194995507418433, guid: d8c095e666ab13c428fb666eec107e08, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4935194995507418433, guid: d8c095e666ab13c428fb666eec107e08, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4935194995507418433, guid: d8c095e666ab13c428fb666eec107e08, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4935194995507418433, guid: d8c095e666ab13c428fb666eec107e08, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -328,7 +328,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7022620474344386906, guid: 84244574e8a046f47a6e6245626c1dd5, type: 3}
       propertyPath: m_Name
-      value: Base Map
+      value: Map Middle
       objectReference: {fileID: 0}
     - target: {fileID: 7022620474344386909, guid: 84244574e8a046f47a6e6245626c1dd5, type: 3}
       propertyPath: m_RootOrder
