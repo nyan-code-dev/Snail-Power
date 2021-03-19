@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class MapLoader : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class MapLoader : MonoBehaviour
     public static LoadMap loadMap;
 
     [SerializeField] private Transform player;
+    [SerializeField] private CinemachineConfiner cameraConfiner;
     [SerializeField] private GameObject[] maps;
 
     private GameObject map;
@@ -25,6 +27,7 @@ public class MapLoader : MonoBehaviour
             map.SetActive(false);
         Destroy(map);
         map = Instantiate(maps[mapIndex]);
+        cameraConfiner.m_BoundingShape2D = map.GetComponent<PolygonCollider2D>();
         if (entranceIndex != null)
         {
             player.position = map.GetComponent<EntranceManager>().entrances[entranceIndex ?? 0].position;
