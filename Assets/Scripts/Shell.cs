@@ -15,8 +15,10 @@ public class Shell
     }
 
     public ShellType type;
-
     public ShellSize size;
-
-    public bool isCharged;
+    /// <summary>
+    /// Number from 0 to 1 saying how much the shell is charged
+    /// </summary>
+    [Range(0, 1)]
+    public float chargedAmount;
 }

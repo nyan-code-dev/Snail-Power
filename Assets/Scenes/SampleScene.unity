@@ -241,7 +241,7 @@ MonoBehaviour:
   shellInfo:
     type: {fileID: 11400000, guid: 8a8c35eee5c144b43a50797ad4ae1937, type: 2}
     size: 0
-    isCharged: 0
+    chargedAmount: 0
 --- !u!114 &154753166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,7 +413,7 @@ RectTransform:
   - {fileID: 1905311642}
   - {fileID: 1158055295}
   m_Father: {fileID: 624828679}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -744,10 +744,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 264016594}
   - {fileID: 1975009682}
   - {fileID: 1324062662}
   - {fileID: 1394572367}
+  - {fileID: 264016594}
   - {fileID: 1887960200}
   m_Father: {fileID: 919577401}
   m_RootOrder: 0
@@ -1689,7 +1689,7 @@ MonoBehaviour:
   shellInfo:
     type: {fileID: 11400000, guid: 8a8c35eee5c144b43a50797ad4ae1937, type: 2}
     size: 0
-    isCharged: 0
+    chargedAmount: 0
 --- !u!114 &1158055297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1895,7 +1895,7 @@ MonoBehaviour:
   shellInfo:
     type: {fileID: 11400000, guid: 8a8c35eee5c144b43a50797ad4ae1937, type: 2}
     size: 0
-    isCharged: 0
+    chargedAmount: 0
 --- !u!114 &1225660089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1966,7 +1966,7 @@ RectTransform:
   - {fileID: 366946283}
   - {fileID: 154753163}
   m_Father: {fileID: 624828679}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2118,7 +2118,7 @@ RectTransform:
   - {fileID: 1361941408}
   - {fileID: 1414310658}
   m_Father: {fileID: 624828679}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2231,7 +2231,7 @@ MonoBehaviour:
   shellInfo:
     type: {fileID: 11400000, guid: 8a8c35eee5c144b43a50797ad4ae1937, type: 2}
     size: 0
-    isCharged: 0
+    chargedAmount: 0
 --- !u!114 &1414310661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2716,13 +2716,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1965533152}
+  lampSlider: {fileID: 982103608}
   lightShell: {fileID: 11400000, guid: 8a8c35eee5c144b43a50797ad4ae1937, type: 2}
+  allowedShellSize: 1
+  energyTime: 0
   startShell:
     type: {fileID: 11400000, guid: 8a8c35eee5c144b43a50797ad4ae1937, type: 2}
     size: 1
-    isCharged: 1
-  allowedShellSize: 1
-  energyTime: 0
+    chargedAmount: 0.519
 --- !u!1 &1975009681
 GameObject:
   m_ObjectHideFlags: 0
@@ -2755,7 +2756,7 @@ RectTransform:
   - {fileID: 2099587557}
   - {fileID: 1225660086}
   m_Father: {fileID: 624828679}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

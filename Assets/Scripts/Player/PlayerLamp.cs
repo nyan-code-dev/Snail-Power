@@ -1,23 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerLamp : MonoBehaviour
+public class PlayerLamp : ShellTool
 {
     [HideInInspector] public Player player;
-    [SerializeField] private ShellType lightShell;
+    [SerializeField] private Slider lampSlider;
+    [SerializeField] private GameObject defaultLight;
+    [SerializeField] private GameObject lampLight;
 
-    [SerializeField] private Shell startShell;
-    [SerializeField] private Shell.ShellSize allowedShellSize;
     [SerializeField] private float energyTime;
+    [SerializeField] private Shell startShell;
 
-    private float timeLeft;
+    private float deltaMultiplier => 1 / energyTime;
     private bool lampOn;
 
     // Start is called before the first frame update
     void Start()
     {
-        PutShell(startShell);
+        ShellPut(startShell);
     }
 
     // Update is called once per frame
@@ -25,35 +27,38 @@ public class PlayerLamp : MonoBehaviour
     {
         if (lampOn)
         {
-            
-        }
-    }
-
-    void PutShell(Shell newShell)
-    {
-        if (newShell.type != lightShell)
-        {
-            Debug.LogError("The shell is not of type lightShell");
-        }
-        else if (newShell.size != allowedShellSize)
-        {
-            Debug.Log("The shell is not of the expected size");
-        }
-        else
-        {
-            if (newShell.isCharged)
+            ChargedAmount -= Time.deltaTime * deltaMultiplier;
+            lampSlider.value = ChargedAmount;
+            if (ChargedAmount == 0)
             {
-                timeLeft = energyTime;
-            }
-            else
-            {
-                timeLeft = 0;
+                Off();
             }
         }
     }
 
     public void OnOff()
     {
-        lampOn = !lampOn;
+        if (lampOn)
+        {
+            Off();
+        }
+        else
+        {
+            On();
+        }
+    }
+
+    void On()
+    {
+        lampOn = true;
+        defaultLight.SetActive(false);
+        lampLight.SetActive(true);
+    }
+
+    void Off()
+    {
+        lampOn = false;
+        defaultLight.SetActive(true);
+        lampLight.SetActive(false);
     }
 }
