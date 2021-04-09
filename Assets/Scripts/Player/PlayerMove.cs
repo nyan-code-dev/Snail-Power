@@ -24,13 +24,14 @@ public class PlayerMove : MonoBehaviour
 
     private float moveInput;
     private Rigidbody2D rb;
-
+    private Animator anim;
     
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -46,6 +47,15 @@ public class PlayerMove : MonoBehaviour
             {
                 isJumping = false;
             }
+        }
+        anim.SetBool("Running", !Mathf.Approximately(moveInput, 0));
+        if (moveInput <= -0.5f)
+        {
+            transform.localScale = new Vector3(1.5f, 1.5f, 1);
+        }
+        else if (moveInput >= 0.5f)
+        {
+            transform.localScale = new Vector3(-1.5f, 1.5f, 1);
         }
     }
 

@@ -14,6 +14,7 @@ public class PlayerInput : MonoBehaviour
         controls.Player.JumpEnd.performed += _ => player.move.JumpEnd();
         controls.Player.Movement.performed += _ => player.move.Movement(_.ReadValue<float>());
         controls.Player.QuickAction.performed += _ => player.lamp.OnOff();
+        controls.Player.Slash.performed += _ => player.combat.Slash();
     }
     // Start is called before the first frame update
     void Start()
