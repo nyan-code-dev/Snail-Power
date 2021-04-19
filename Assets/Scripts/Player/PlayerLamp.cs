@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class PlayerLamp : ShellTool
 {
     [HideInInspector] public Player player;
-    [SerializeField] private Slider lampSlider;
+    [HideInInspector] public Slider lampSlider;
+
     [SerializeField] private GameObject defaultLight;
     [SerializeField] private GameObject lampLight;
 

@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     [HideInInspector] public PlayerLamp lamp;
     [HideInInspector] public PlayerCombat combat;
 
+    [SerializeField] private float invincibilityTime;
+    private bool recievesDamage = true;
+    [SerializeField] private int health = 3;
     private int? entranceIndex;
 
     private void Awake()
@@ -47,6 +50,27 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene(exit.sceneIndex);
             entranceIndex = exit.entranceIndex;
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (recievesDamage && collision.CompareTag("Enemy"))
+        {
+            Debug.Log("Touched enemy");
+            recievesDamage = false;
+            health--;
+            if (health <= 0)
+            {
+                Debug.Log("PLAYER IS DEAD");
+            }
+            StartCoroutine(InvincibilityTime());
+        }
+    }
+
+    IEnumerator InvincibilityTime()
+    {
+        yield return new WaitForSeconds(invincibilityTime);
+        recievesDamage = true;
     }
 
     public void MoveToEntrance(Transform[] entrances)
