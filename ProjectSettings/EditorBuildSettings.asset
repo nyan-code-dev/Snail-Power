@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Elder's House.unity
+    guid: 85bc2cd63f4a3cb419aca6f8c80dba07
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 4fb9858037defe24ea9b75df28a1eb8e
+    path: Assets/Scenes/Village Right Side.unity
+    guid: 6263636d82d6cd9478af000eabc25e8d
   m_configObjects: {}
