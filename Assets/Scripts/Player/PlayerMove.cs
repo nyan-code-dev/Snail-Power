@@ -10,7 +10,7 @@ public class PlayerMove : MonoBehaviour
 
     [HideInInspector] public Player player;
 
-    private bool isGrounded;
+    [HideInInspector] public bool isGrounded;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float checkRadious;
     [SerializeField] private LayerMask whatIsGround;

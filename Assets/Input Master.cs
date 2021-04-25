@@ -43,17 +43,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": ""Press(behavior=2)""
                 },
                 {
-                    ""name"": ""Quick Action"",
+                    ""name"": ""Slash"",
                     ""type"": ""Button"",
-                    ""id"": ""128a04c1-bf62-4f4a-b8bd-ba9c79be3698"",
+                    ""id"": ""65faf813-53ff-43d0-9837-dcc552e183c6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Slash"",
+                    ""name"": ""Up"",
                     ""type"": ""Button"",
-                    ""id"": ""65faf813-53ff-43d0-9837-dcc552e183c6"",
+                    ""id"": ""d222c7d4-2708-4864-a1a6-77ef472fc382"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -117,23 +117,23 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""999d0dae-974f-41ff-af1a-340350bd7814"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and mouse"",
-                    ""action"": ""Quick Action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""f9043f46-3ad2-4d44-955c-7156d71788e6"",
                     ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and mouse"",
                     ""action"": ""Slash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f80703a7-0f3b-43b2-a90d-2e4d3ce1a439"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Up"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -175,8 +175,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_JumpStart = m_Player.FindAction("JumpStart", throwIfNotFound: true);
         m_Player_JumpEnd = m_Player.FindAction("JumpEnd", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
-        m_Player_QuickAction = m_Player.FindAction("Quick Action", throwIfNotFound: true);
         m_Player_Slash = m_Player.FindAction("Slash", throwIfNotFound: true);
+        m_Player_Up = m_Player.FindAction("Up", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -229,8 +229,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_JumpStart;
     private readonly InputAction m_Player_JumpEnd;
     private readonly InputAction m_Player_Movement;
-    private readonly InputAction m_Player_QuickAction;
     private readonly InputAction m_Player_Slash;
+    private readonly InputAction m_Player_Up;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -238,8 +238,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @JumpStart => m_Wrapper.m_Player_JumpStart;
         public InputAction @JumpEnd => m_Wrapper.m_Player_JumpEnd;
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
-        public InputAction @QuickAction => m_Wrapper.m_Player_QuickAction;
         public InputAction @Slash => m_Wrapper.m_Player_Slash;
+        public InputAction @Up => m_Wrapper.m_Player_Up;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,12 +258,12 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                @QuickAction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickAction;
-                @QuickAction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickAction;
-                @QuickAction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickAction;
                 @Slash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlash;
                 @Slash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlash;
                 @Slash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlash;
+                @Up.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUp;
+                @Up.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUp;
+                @Up.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUp;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -277,12 +277,12 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
-                @QuickAction.started += instance.OnQuickAction;
-                @QuickAction.performed += instance.OnQuickAction;
-                @QuickAction.canceled += instance.OnQuickAction;
                 @Slash.started += instance.OnSlash;
                 @Slash.performed += instance.OnSlash;
                 @Slash.canceled += instance.OnSlash;
+                @Up.started += instance.OnUp;
+                @Up.performed += instance.OnUp;
+                @Up.canceled += instance.OnUp;
             }
         }
     }
@@ -310,7 +310,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnJumpStart(InputAction.CallbackContext context);
         void OnJumpEnd(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
-        void OnQuickAction(InputAction.CallbackContext context);
         void OnSlash(InputAction.CallbackContext context);
+        void OnUp(InputAction.CallbackContext context);
     }
 }
