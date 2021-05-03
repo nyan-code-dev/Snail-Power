@@ -5,7 +5,6 @@ using UnityEngine;
 public class Parallax : MonoBehaviour
 {
     [SerializeField] private Camera cam;
-    [SerializeField] private Transform subject;
 
     private Vector3 startPosition;
     private float parallaxFactor;
@@ -14,7 +13,7 @@ public class Parallax : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
-        float distanceFromSubject = transform.position.z - subject.position.z;
+        float distanceFromSubject = transform.position.z - Player.instance.transform.position.z;
         float clippingPlane = cam.transform.position.z + (distanceFromSubject > 0 ? cam.farClipPlane : cam.nearClipPlane);
         parallaxFactor = Mathf.Abs(distanceFromSubject / clippingPlane);
     }

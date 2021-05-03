@@ -49,13 +49,13 @@ public class PlayerMove : MonoBehaviour
             }
         }
         anim.SetBool("Running", !Mathf.Approximately(moveInput, 0));
-        if (moveInput <= -0.5f)
+        if (moveInput >= -0.5f)
         {
-            transform.localScale = new Vector3(1.5f, 1.5f, 1);
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
-        else if (moveInput >= 0.5f)
+        else if (moveInput <= 0.5f)
         {
-            transform.localScale = new Vector3(-1.5f, 1.5f, 1);
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y, transform.localScale.z);
         }
     }
 

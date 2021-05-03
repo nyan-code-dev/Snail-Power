@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Village Right Side.unity
     guid: 6263636d82d6cd9478af000eabc25e8d
+  - enabled: 1
+    path: Assets/Scenes/Village.unity
+    guid: 77b5830c05dd2ba45b2e7cfe69a786ce
   m_configObjects: {}

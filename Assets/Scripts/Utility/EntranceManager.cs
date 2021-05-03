@@ -5,10 +5,13 @@ using UnityEditor;
 
 public class EntranceManager : MonoBehaviour
 {
-    public Transform[] entrances;
-
     private void Start()
     {
-        Player.instance.MoveToEntrance(entrances);
+        List<Transform> children = new List<Transform>();
+        foreach(Transform t in transform)
+        {
+            children.Add(t);
+        }
+        Player.instance.MoveToEntrance(children.ToArray());
     }
 }
