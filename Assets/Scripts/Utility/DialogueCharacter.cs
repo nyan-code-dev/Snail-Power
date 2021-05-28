@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : Interaction
+public class DialogueCharacter : Interaction
 {
-    public int sceneIndex, entranceIndex;
+    public string[] dialogues;
 }

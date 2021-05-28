@@ -15,7 +15,7 @@ public class Parallax : MonoBehaviour
         startPosition = transform.position;
         float distanceFromSubject = transform.position.z - Player.instance.transform.position.z;
         float clippingPlane = cam.transform.position.z + (distanceFromSubject > 0 ? cam.farClipPlane : cam.nearClipPlane);
-        parallaxFactor = Mathf.Abs(distanceFromSubject / clippingPlane);
+        parallaxFactor = (distanceFromSubject > 0 ? 1 : -1) * Mathf.Abs(distanceFromSubject / clippingPlane);
     }
 
     // Update is called once per frame

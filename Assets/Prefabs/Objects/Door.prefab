@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aba45bb58ebcfe4b958c229e5bd83e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enterText: {fileID: 8587932942559056667}
+  interactionText: {fileID: 8587932942559056667}
   sceneIndex: 0
   entranceIndex: 0
 --- !u!61 &8587932942001471264

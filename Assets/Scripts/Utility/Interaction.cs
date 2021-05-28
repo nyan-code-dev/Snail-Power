@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : Interaction
+public class Interaction : MonoBehaviour
 {
-    public int sceneIndex, entranceIndex;
+    public GameObject interactionText;
 }

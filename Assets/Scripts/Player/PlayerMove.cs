@@ -67,6 +67,9 @@ public class PlayerMove : MonoBehaviour
 
     public void JumpStart()
     {
+        if (!player.canMove)
+            return;
+
         jumpPressed = true;
         if (isGrounded)
         {
@@ -78,12 +81,17 @@ public class PlayerMove : MonoBehaviour
 
     public void JumpEnd()
     {
+        if (!player.canMove)
+            return;
+
         jumpPressed = false;
         isJumping = false;
     }
 
     public void Movement(float input)
     {
+        if (!player.canMove)
+            return;
         moveInput = input;
     }
 }

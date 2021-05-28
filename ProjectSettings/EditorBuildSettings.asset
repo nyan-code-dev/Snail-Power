@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Elder's House.unity
     guid: 85bc2cd63f4a3cb419aca6f8c80dba07
   - enabled: 1
-    path: Assets/Scenes/Village Right Side.unity
+    path: Assets/Scenes/Village Right.unity
     guid: 6263636d82d6cd9478af000eabc25e8d
   - enabled: 1
-    path: Assets/Scenes/Village.unity
+    path: Assets/Scenes/Village Middle-Right.unity
     guid: 77b5830c05dd2ba45b2e7cfe69a786ce
+  - enabled: 1
+    path: Assets/Scenes/Village Middle.unity
+    guid: c455970726d726f42a8fe2bea961b86f
   m_configObjects: {}

@@ -11,12 +11,14 @@ public class Player : MonoBehaviour
     [HideInInspector] public PlayerMove move;
     [HideInInspector] public PlayerCombat combat;
 
+    public bool canMove = true;
+
     [SerializeField] private float invincibilityTime;
     private bool recievesDamage = true;
     [SerializeField] private int health = 3;
 
     private int? entranceIndex;
-    private Door currentDoor;
+    private Interaction currentInteraction;
 
     private void Awake()
     {
@@ -49,10 +51,10 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene(exit.sceneIndex);
             entranceIndex = exit.entranceIndex;
         }
-        else if (collision.TryGetComponent(out Door door))
+        else if (collision.TryGetComponent(out Interaction interaction))
         {
-            door.enterText.SetActive(true);
-            currentDoor = door;
+            interaction.interactionText.SetActive(true);
+            currentInteraction = interaction;
         }
     }
 
@@ -73,10 +75,10 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (currentDoor != null && collision.gameObject == currentDoor.gameObject)
+        if (currentInteraction != null && collision.gameObject == currentInteraction.gameObject)
         {
-            currentDoor.enterText.SetActive(false);
-            currentDoor = null;
+            currentInteraction.interactionText.SetActive(false);
+            currentInteraction = null;
         }
     }
 
@@ -94,12 +96,21 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void EnterDoor()
+    public void Interact()
     {
-        if (move.isGrounded && currentDoor)
+        if (move.isGrounded && currentInteraction)
         {
-            SceneManager.LoadScene(currentDoor.sceneIndex);
-            entranceIndex = currentDoor.entranceIndex;
+            if (currentInteraction is Door)
+            {
+                SceneManager.LoadScene(((Door)currentInteraction).sceneIndex);
+                entranceIndex = ((Door)currentInteraction).entranceIndex;
+            }
+            else if (currentInteraction is DialogueCharacter)
+            {
+                canMove = false;
+                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                DialogueManager.startDialogue(((DialogueCharacter)currentInteraction).dialogues);
+            }
         }
     }
 }

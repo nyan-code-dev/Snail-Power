@@ -17,6 +17,9 @@ public class PlayerCombat : MonoBehaviour
 
     public void Slash()
     {
+        if (!player.canMove)
+            return;
+
         if (!slashing)
         {
             anim.SetTrigger("Slash");

@@ -125,6 +125,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "5de31c9d-3777-4351-8ff7-9def7190e2f2",
+            "actions": [
+                {
+                    "name": "Accept",
+                    "type": "Button",
+                    "id": "a9270e4d-6a6b-4ee1-b95c-8a75ba675a42",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c638501d-880c-47d2-8e5e-cfd50c57a5d7",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and mouse",
+                    "action": "Accept",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
