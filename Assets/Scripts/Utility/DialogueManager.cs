@@ -37,6 +37,11 @@ public class DialogueManager : MonoBehaviour
         controls.Disable();
     }
 
+    private void OnDestroy()
+    {
+        startDialogue -= StartDialogue;
+    }
+
     void StartDialogue(string[] dialogues)
     {
         dialogueBox.SetActive(true);
@@ -76,7 +81,6 @@ public class DialogueManager : MonoBehaviour
     IEnumerator TypeNextDialogue()
     {
         isTyping = true;
-        Debug.Log(dialogueIndex);
         string dialogue = currentDialogues[dialogueIndex];
         dialogueText.text = "";
         foreach (char letter in dialogue)
