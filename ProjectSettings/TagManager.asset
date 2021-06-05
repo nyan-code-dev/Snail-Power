@@ -15,7 +15,7 @@ TagManager:
   - UI
   - Ground
   - Character
-  - 
+  - Darkness
   - 
   - 
   - 
@@ -55,6 +55,6 @@ TagManager:
   - name: Front
     uniqueID: 1180836713
     locked: 0
-  - name: UI
+  - name: Light
     uniqueID: 2561310539
     locked: 0
